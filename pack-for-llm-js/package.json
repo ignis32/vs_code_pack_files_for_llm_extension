@@ -1,0 +1,54 @@
+{
+  "name": "pack-for-llm",
+  "displayName": "Pack for LLM",
+  "description": "Packs selected files or directories into one document with headers for LLM processing.",
+  "version": "0.1.0",
+  "publisher": "YourName",
+  "engines": {
+    "vscode": "^1.50.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:extension.packForLlm"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.packForLlm",
+        "title": "Pack for LLM"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "extension.packForLlm",
+          "group": "navigation"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "extension.packForLlm",
+          "group": "navigation"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Pack for LLM",
+      "properties": {
+        "packForLlm.excludePatterns": {
+          "type": "array",
+          "default": ["node_modules/**", ".git/**", "dist/**", "build/**"],
+          "description": "Glob patterns to exclude files when packing directories"
+        },
+        "packForLlm.maxFileSize": {
+          "type": "number",
+          "default": 500,
+          "description": "Maximum file size in KB to include when packing"
+        }
+      }
+    }
+  }
+}
